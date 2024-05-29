@@ -1,0 +1,45 @@
+.todo-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.spaced {
+  margin-bottom: 20px;
+}
+
+.done {
+  text-decoration: line-through;
+  color: rgb(128, 128, 128);
+}
+
+.edit-input {
+  width: 100%;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 26px;
+}

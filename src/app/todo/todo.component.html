@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span class="title">Le Mie Note</span>
+</mat-toolbar>
+<div class="todo-container">
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="fill" class="full-width spaced">
+        <mat-label>Aggiungi una nuova attività</mat-label>
+        <input matInput [(ngModel)]="newTask" />
+      </mat-form-field>
+      <div class="button-container">
+        <button mat-raised-button color="primary" class="add-button" (click)="addTask()">Aggiungi</button>
+      </div>
+      <mat-form-field appearance="fill" class="full-width spaced">
+        <mat-label>Filtra attività</mat-label>
+        <mat-select [(value)]="filter">
+          <mat-option value="all">Tutte</mat-option>
+          <mat-option value="done">Completate</mat-option>
+          <mat-option value="notDone">Non completate</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-list>
+        <mat-list-item *ngFor="let task of filteredTasks(); let i = index" class="spaced">
+          <mat-checkbox [(ngModel)]="task.done" (change)="updateTaskStatus()"></mat-checkbox>
+          <ng-container *ngIf="!task.editing">
+            <span [class.done]="task.done">{{ task.title }}</span>
+            <button mat-icon-button color="warn" (click)="deleteTask(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" (click)="editTask(task)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="task.editing">
+            <mat-form-field class="edit-input">
+              <input matInput [(ngModel)]="task.title" (blur)="saveTask(task, task.title)" />
+            </mat-form-field>
+          </ng-container>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
